@@ -1,7 +1,29 @@
-# openai_weaviate
+# Skills Tagger
 
-## This repo contains text data and python code for a medium article.
-## I am not the author nor the owner of the text data inside the json file in this repo. I got the text data from a history textbook and the authors of the book should get full credit. I've taken snippets of text from the book for educational purposes only.
+# Requires Docker
+# Requires OpenAI Key in a config.py, named "api_key"
+# Python v3.8+
 
-### Book citation:
-### Henretta, J.A. et al. (2021) America's history: Concise edition. Boston: Bedford/St. Martin's. 
+# Step 1: Configure Weviate
+
+- download YAML file using following curl command: 
+- curl -o docker-compose.yml "https://configuration.weaviate.io/v2/docker-compose/docker-compose.yml?modules=standalone&runtime=docker-compose&weaviate_version=v1.18.0"
+
+Open docker-compose.yml and add the following volume:
+
+image: semitechnologies/weaviate:1.18.0
+volumes:
+  - /var/weaviate:/var/lib/weaviate
+
+Save the yml file
+
+Run docker-compose up-d
+
+# Step 2: Python package install
+
+Install the following packages: 
+
+pip install openai
+pip install pandas
+pip install weaviate-client
+
